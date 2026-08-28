@@ -60,7 +60,10 @@ junjaBtn.addEventListener('click', () => {
 function falarPalavra(palavra) {
   if (!('speechSynthesis' in window)) return;
   window.speechSynthesis.cancel();
-  const utterance = new SpeechSynthesisUtterance(palavra);
+  // Espaços entre as sílabas ajudam a voz do navegador a não isolar a
+  // consoante final (por exemplo, "jun-ja" em vez de "ju-n-ja").
+  const textoParaFala = gerarPronuncia(palavra).replaceAll(' • ', ' ');
+  const utterance = new SpeechSynthesisUtterance(textoParaFala);
   utterance.lang = 'pt-BR';
   utterance.rate = 0.85;
 
