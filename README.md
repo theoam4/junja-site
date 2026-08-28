@@ -47,15 +47,14 @@ forma recomendada para testar o comportamento real de scripts e áudio.
 1. Faça as alterações e os testes locais em `develop`, sem necessidade de
    commit para enxergá-las no navegador.
 2. Quando quiser compartilhar o trabalho com o time, crie um commit e envie a
-   branch com `git push origin develop`. A Vercel cria um **preview**; ele não
-   altera o site público.
-3. Depois de validar o preview, abra um pull request de `develop` para `main`.
-4. Ao fazer merge (ou push) na `main`, a Vercel faz o deploy de **produção** e
-   atualiza https://junja-site.vercel.app.
+   branch com `git push origin develop`. A Vercel **não cria preview** para
+   essa branch: os testes continuam locais.
+3. Depois de validar localmente, abra um pull request de `develop` para `main`.
+4. Ao fazer merge (ou push) na `main`, a Vercel faz o único deploy automático,
+   de **produção**, e atualiza https://junja-site.vercel.app.
 
 Não faça deploy manual pela CLI para publicar mudanças normais: a `main` é a
-fonte de verdade da produção. Outras branches também recebem previews, nunca o
-alias público.
+fonte de verdade da produção. Outras branches não geram deploy na Vercel.
 
 ## O que tem nessa versão
 - **Botão Junja** — gera uma palavra nova a cada clique
