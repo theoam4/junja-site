@@ -1,0 +1,302 @@
+:root {
+  --bg-0: #0b0710;
+  --bg-1: #170a26;
+  --surface: #180f26;
+  --surface-hover: #201533;
+  --border: rgba(167, 139, 250, 0.16);
+  --text: #f3eefb;
+  --text-muted: #9b8fb0;
+  --purple-soft: #a78bfa;
+  --purple-strong: #7c3aed;
+  --purple-strong-hover: #8b4ff0;
+  --purple-wash: rgba(124, 58, 237, 0.14);
+  --orange-soft: #f5b98a;
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  font-family: var(--font-body);
+  color: var(--text);
+  background:
+    radial-gradient(circle at 20% 15%, var(--bg-1), transparent 55%),
+    radial-gradient(circle at 85% 80%, #1a0e2e, transparent 50%),
+    var(--bg-0);
+  background-attachment: fixed;
+}
+
+.layout {
+  display: flex;
+  align-items: stretch;
+  gap: 24px;
+  width: 100%;
+  max-width: 900px;
+}
+
+.card {
+  flex: 1;
+  min-width: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 32px 28px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+}
+
+/* --- Coluna do gerador --- */
+
+.header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.spark {
+  color: var(--purple-soft);
+  font-size: 15px;
+}
+
+.subtitle {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.word-display {
+  background: var(--purple-wash);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 26px 20px;
+  min-height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.word {
+  font-family: var(--font-display);
+  font-size: 32px;
+  color: var(--purple-soft);
+  word-break: break-word;
+  text-align: center;
+  transition: opacity 0.15s ease;
+}
+
+.word.fade {
+  opacity: 0;
+}
+
+.icon-btn {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--purple-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.icon-btn:hover:not(:disabled) {
+  background: var(--surface-hover);
+}
+
+.icon-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.icon-btn:active:not(:disabled) {
+  transform: scale(0.92);
+}
+
+.icon-btn.playing {
+  animation: pulse 0.9s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
+}
+
+.primary-btn {
+  width: 100%;
+  padding: 20px;
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 500;
+  color: #fff;
+  background: var(--purple-strong);
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  margin-bottom: 22px;
+  transition: background 0.15s ease, transform 0.08s ease;
+}
+
+.primary-btn:hover {
+  background: var(--purple-strong-hover);
+}
+
+.primary-btn:active {
+  transform: scale(0.98);
+}
+
+.rules {
+  background: var(--surface-hover);
+  border-radius: 14px;
+  padding: 16px 18px;
+  margin-bottom: 20px;
+}
+
+.rules-title {
+  margin: 0 0 8px;
+  font-size: 13px;
+  color: var(--text);
+}
+
+.rules-list {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.history-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: 0 0 8px;
+}
+
+.history-chips {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.chip {
+  font-size: 13px;
+  background: var(--surface-hover);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 4px 12px;
+  color: var(--text);
+}
+
+/* --- Coluna de significado --- */
+
+.meaning-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.meaning-word {
+  font-family: var(--font-display);
+  font-size: 22px;
+  text-align: center;
+  margin: 0;
+}
+
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 16px 0;
+}
+
+.meaning-row {
+  text-align: center;
+  font-size: 15px;
+  color: var(--text-muted);
+  font-style: italic;
+  margin: 4px 0;
+}
+
+.meaning-tipo {
+  color: var(--purple-soft);
+  font-style: normal;
+  font-weight: 600;
+}
+
+.meaning-definicao {
+  text-align: center;
+  font-size: 15px;
+  color: var(--text);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.meaning-exemplo-label {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--orange-soft);
+  margin: 0 0 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.meaning-exemplo {
+  text-align: center;
+  font-size: 14px;
+  font-style: italic;
+  color: var(--orange-soft);
+  line-height: 1.5;
+  margin: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .icon-btn.playing {
+    animation: none;
+  }
+  * {
+    transition: none !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .layout {
+    flex-direction: column;
+  }
+  .card {
+    padding: 26px 20px;
+  }
+  .word {
+    font-size: 26px;
+  }
+  .primary-btn {
+    font-size: 20px;
+    padding: 18px;
+  }
+}
