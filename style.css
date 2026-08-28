@@ -98,7 +98,7 @@ body {
 
 .word {
   font-family: var(--font-display);
-  font-size: 32px;
+  font-size: 48px;
   color: var(--purple-soft);
   word-break: break-word;
   text-align: center;
