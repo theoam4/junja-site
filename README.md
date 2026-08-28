@@ -4,12 +4,22 @@
 
 Cada membro do time pode visualizar e testar as alterações no próprio
 computador, sem fazer commit nem enviar código para o GitHub. Para iniciar a
-prévia local:
+prévia local, use o comando correspondente ao seu sistema:
+
+**WSL, Linux ou Git Bash**
 
 ```bash
 git checkout develop
 git pull origin develop
 bash scripts/dev.sh
+```
+
+**Windows PowerShell**
+
+```powershell
+git checkout develop
+git pull origin develop
+powershell -ExecutionPolicy Bypass -File .\scripts\dev.ps1
 ```
 
 Abra [http://127.0.0.1:8000](http://127.0.0.1:8000) no navegador. Edite
@@ -21,6 +31,12 @@ Se a porta 8000 já estiver ocupada, escolha outra porta:
 
 ```bash
 bash scripts/dev.sh 8001
+```
+
+No PowerShell, use:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\dev.ps1 -Port 8001
 ```
 
 Também é possível abrir `index.html` diretamente, mas o servidor local é a
