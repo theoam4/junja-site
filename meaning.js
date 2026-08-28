@@ -121,23 +121,41 @@ function amostrarSemReposicao(lista, quantidade) {
 }
 
 function gerarPronuncia(palavra) {
-  const vogais = 'aeiou';
-  const silabas = [];
-  let atual = '';
   const p = palavra.toLowerCase();
+  const vogais = 'aeiou';
+  let indice = 0;
+  let inicioDaSilaba = '';
 
-  for (let i = 0; i < p.length; i++) {
-    const letra = p[i];
-    atual += letra;
-    const proximaEhVogal = i + 1 < p.length ? vogais.includes(p[i + 1]) : null;
-    if (vogais.includes(letra) && (i === p.length - 1 || !proximaEhVogal)) {
-      silabas.push(atual);
-      atual = '';
-    }
+  // Guarda o ataque (as consoantes antes da primeira vogal) na primeira
+  // sílaba. As palavras Junja sempre começam com uma consoante, mas esta
+  // regra também torna a função segura para palavras externas.
+  while (indice < p.length && !vogais.includes(p[indice])) {
+    inicioDaSilaba += p[indice];
+    indice += 1;
   }
-  if (atual) silabas.push(atual);
 
-  return silabas.length ? silabas.join(' • ') : p;
+  const resultado = [];
+
+  while (indice < p.length) {
+    let nucleo = '';
+    while (indice < p.length && vogais.includes(p[indice])) nucleo += p[indice++];
+
+    let consoantes = '';
+    while (indice < p.length && !vogais.includes(p[indice])) consoantes += p[indice++];
+
+    // No fim da palavra, a consoante fecha a última sílaba: "jun", "son".
+    // Entre vogais, a última consoante abre a próxima sílaba; as anteriores
+    // fecham a atual: "jun-ja", "jom-ber-son".
+    if (indice === p.length) {
+      resultado.push(inicioDaSilaba + nucleo + consoantes);
+      break;
+    }
+
+    resultado.push(inicioDaSilaba + nucleo + consoantes.slice(0, -1));
+    inicioDaSilaba = consoantes.slice(-1);
+  }
+
+  return resultado.filter(Boolean).join(' • ') || p;
 }
 
 /**
@@ -171,4 +189,8 @@ function gerarSignificado(palavra) {
     definicao: definicao.charAt(0).toUpperCase() + definicao.slice(1),
     exemplo,
   };
+}
+
+if (typeof module !== 'undefined') {
+  module.exports = { gerarPronuncia };
 }

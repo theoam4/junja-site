@@ -1,12 +1,60 @@
 # Junja — gerador de palavras sem sentido
 
-## Como abrir
-Não precisa instalar nada. Descompacte a pasta e dê duplo clique em
-**`index.html`** — abre direto no navegador.
+## Desenvolvimento local (sem commit)
 
-(Se o navegador bloquear alguma coisa por segurança ao abrir como arquivo
-local, rode um servidor bem simples dentro da pasta:
-`python3 -m http.server 8000` e acesse `http://localhost:8000`.)
+Cada membro do time pode visualizar e testar as alterações no próprio
+computador, sem fazer commit nem enviar código para o GitHub. Para iniciar a
+prévia local, use o comando correspondente ao seu sistema:
+
+**WSL, Linux ou Git Bash**
+
+```bash
+git checkout develop
+git pull origin develop
+bash scripts/dev.sh
+```
+
+**Windows PowerShell**
+
+```powershell
+git checkout develop
+git pull origin develop
+powershell -ExecutionPolicy Bypass -File .\scripts\dev.ps1
+```
+
+Abra [http://127.0.0.1:8000](http://127.0.0.1:8000) no navegador. Edite
+qualquer arquivo do site e recarregue a página para ver o resultado na hora.
+Nada dessa etapa é publicado: o servidor lê diretamente os arquivos da sua
+máquina. Encerre-o com `Ctrl+C`.
+
+Se a porta 8000 já estiver ocupada, escolha outra porta:
+
+```bash
+bash scripts/dev.sh 8001
+```
+
+No PowerShell, use:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\dev.ps1 -Port 8001
+```
+
+Também é possível abrir `index.html` diretamente, mas o servidor local é a
+forma recomendada para testar o comportamento real de scripts e áudio.
+
+## Fluxo de branches e deploy
+
+1. Faça as alterações e os testes locais em `develop`, sem necessidade de
+   commit para enxergá-las no navegador.
+2. Quando quiser compartilhar o trabalho com o time, crie um commit e envie a
+   branch com `git push origin develop`. A Vercel **não cria preview** para
+   essa branch: os testes continuam locais.
+3. Depois de validar localmente, abra um pull request de `develop` para `main`.
+4. Ao fazer merge (ou push) na `main`, a Vercel faz o único deploy automático,
+   de **produção**, e atualiza https://junja-site.vercel.app.
+
+Não faça deploy manual pela CLI para publicar mudanças normais: a `main` é a
+fonte de verdade da produção. Outras branches não geram deploy na Vercel.
 
 ## O que tem nessa versão
 - **Botão Junja** — gera uma palavra nova a cada clique
