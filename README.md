@@ -1,12 +1,34 @@
 # Junja — gerador de palavras sem sentido
 
-## Como abrir
-Não precisa instalar nada. Descompacte a pasta e dê duplo clique em
-**`index.html`** — abre direto no navegador.
+## Desenvolvimento local
 
-(Se o navegador bloquear alguma coisa por segurança ao abrir como arquivo
-local, rode um servidor bem simples dentro da pasta:
-`python3 -m http.server 8000` e acesse `http://localhost:8000`.)
+O desenvolvimento acontece na branch `develop`. Para iniciar uma prévia local:
+
+```bash
+git checkout develop
+git pull origin develop
+python3 -m http.server 8000 --bind 127.0.0.1
+```
+
+Abra [http://localhost:8000](http://localhost:8000) no navegador. O comando
+usa apenas o servidor HTTP nativo do Python, sem dependências para instalar.
+Encerre-o com `Ctrl+C`.
+
+Também é possível abrir `index.html` diretamente, mas o servidor local é a
+forma recomendada para testar o comportamento real de scripts e áudio.
+
+## Fluxo de branches e deploy
+
+1. Faça as alterações e os testes locais em `develop`.
+2. Envie a branch com `git push origin develop`. A Vercel cria um **preview**;
+   ele não altera o site público.
+3. Depois de validar o preview, abra um pull request de `develop` para `main`.
+4. Ao fazer merge (ou push) na `main`, a Vercel faz o deploy de **produção** e
+   atualiza https://junja-site.vercel.app.
+
+Não faça deploy manual pela CLI para publicar mudanças normais: a `main` é a
+fonte de verdade da produção. Outras branches também recebem previews, nunca o
+alias público.
 
 ## O que tem nessa versão
 - **Botão Junja** — gera uma palavra nova a cada clique
