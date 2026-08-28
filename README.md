@@ -9,7 +9,7 @@ prévia local:
 ```bash
 git checkout develop
 git pull origin develop
-./scripts/dev.sh
+bash scripts/dev.sh
 ```
 
 Abra [http://127.0.0.1:8000](http://127.0.0.1:8000) no navegador. Edite
@@ -20,7 +20,7 @@ máquina. Encerre-o com `Ctrl+C`.
 Se a porta 8000 já estiver ocupada, escolha outra porta:
 
 ```bash
-./scripts/dev.sh 8001
+bash scripts/dev.sh 8001
 ```
 
 Também é possível abrir `index.html` diretamente, mas o servidor local é a
