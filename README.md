@@ -1,27 +1,38 @@
 # Junja — gerador de palavras sem sentido
 
-## Desenvolvimento local
+## Desenvolvimento local (sem commit)
 
-O desenvolvimento acontece na branch `develop`. Para iniciar uma prévia local:
+Cada membro do time pode visualizar e testar as alterações no próprio
+computador, sem fazer commit nem enviar código para o GitHub. Para iniciar a
+prévia local:
 
 ```bash
 git checkout develop
 git pull origin develop
-python3 -m http.server 8000 --bind 127.0.0.1
+./scripts/dev.sh
 ```
 
-Abra [http://localhost:8000](http://localhost:8000) no navegador. O comando
-usa apenas o servidor HTTP nativo do Python, sem dependências para instalar.
-Encerre-o com `Ctrl+C`.
+Abra [http://127.0.0.1:8000](http://127.0.0.1:8000) no navegador. Edite
+qualquer arquivo do site e recarregue a página para ver o resultado na hora.
+Nada dessa etapa é publicado: o servidor lê diretamente os arquivos da sua
+máquina. Encerre-o com `Ctrl+C`.
+
+Se a porta 8000 já estiver ocupada, escolha outra porta:
+
+```bash
+./scripts/dev.sh 8001
+```
 
 Também é possível abrir `index.html` diretamente, mas o servidor local é a
 forma recomendada para testar o comportamento real de scripts e áudio.
 
 ## Fluxo de branches e deploy
 
-1. Faça as alterações e os testes locais em `develop`.
-2. Envie a branch com `git push origin develop`. A Vercel cria um **preview**;
-   ele não altera o site público.
+1. Faça as alterações e os testes locais em `develop`, sem necessidade de
+   commit para enxergá-las no navegador.
+2. Quando quiser compartilhar o trabalho com o time, crie um commit e envie a
+   branch com `git push origin develop`. A Vercel cria um **preview**; ele não
+   altera o site público.
 3. Depois de validar o preview, abra um pull request de `develop` para `main`.
 4. Ao fazer merge (ou push) na `main`, a Vercel faz o deploy de **produção** e
    atualiza https://junja-site.vercel.app.
