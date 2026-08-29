@@ -171,7 +171,7 @@ function gerarSignificado(palavra) {
   const word1 = ref1.toLowerCase();
   // No original em Python, só word1 é sempre minúsculo -- word2 mantém a
   // caixa original da palavra de referência quando existem 2 distintas.
-  const word2 = ref2 !== undefined ? ref2 : ref1.toLowerCase();
+  const word2 = ref2.toLowerCase() !== undefined ? ref2.toLowerCase() : ref1.toLowerCase();
 
   const action = escolherAleatorio(ACTIONS);
 
