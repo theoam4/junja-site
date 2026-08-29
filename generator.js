@@ -49,6 +49,18 @@ function ehVogal(letra) {
 function avaliarTransicao(penultima, ultima, proxima) {
   if (ultima === null) return true;
 
+   // H só pode aparecer em CH, LH ou NH
+  if (proxima === 'h') {
+    return LETRAS_DIGRAFO_H.has(ultima);
+  }
+
+  if (ultima === proxima) {
+    if (LETRAS_DOBRAVEIS.has(ultima) && penultima !== null && ehVogal(penultima)) {
+      return true;
+    }
+    return false;
+  }
+
   if (ultima === proxima) {
     if (LETRAS_DOBRAVEIS.has(ultima) && penultima !== null && ehVogal(penultima)) {
       return true;
