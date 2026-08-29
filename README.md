@@ -1,4 +1,4 @@
-# Junja — gerador de palavras sem sentido
+# JUNJA — gerador de palavras sem sentido
 
 ## Desenvolvimento local (sem commit)
 
