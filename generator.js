@@ -17,7 +17,7 @@ const TODAS_LETRAS = [...VOWELS, ...CONSONANTS];
 const LETTER_FREQUENCIES = {
   a: 14, e: 12, o: 10, s: 8, r: 7, i: 6, n: 5, d: 5, m: 5, t: 5,
   u: 5, c: 4, l: 4, p: 3, v: 2, g: 2, b: 2, f: 1, h: 1,
-  q: 1, z: 1, j: 1, x: 1, 'ç': 2,
+  q: 1, z: 1, j: 2, x: 1, 'ç': 2,
 };
 
 const MIN_WORD_LENGTH = 4;
