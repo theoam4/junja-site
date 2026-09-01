@@ -89,6 +89,7 @@ const DEFINITION_TEMPLATES = {
     'Que possui características difíceis de distinguir das de {word1}.',
     'Que se torna particularmente evidente na presença de {word2}.',
     'Tipo de jogada que o {nome1} faz nas rankeds.',
+    'Com cheirinho do {nome1}',
   ],
 
   adverbio: [
@@ -112,7 +113,6 @@ const DEFINITION_TEMPLATES = {
     'De modo semelhante ao comportamento de {word1}.',
     'Com uma precisão incomum para situações envolvendo {word2}.',
     'De maneira típica de situações relacionadas a {word1}.',
-    'Com cheirinho do {nome1}'
   ],
 };
 
