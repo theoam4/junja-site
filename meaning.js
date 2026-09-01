@@ -16,7 +16,7 @@ const PALAVRAS_SIGNIFICADO = [
 const NOME = [
   'Walmir', 'Theozin', 'Keks mitinho', 'Marks', 'Wolf', 'Naldin', 'Zeg', 'Djow Djow',
   'Bernadin', 'Lucca', 'Galileu', 'Vitu P.O.', 'Xexeu', 'Marcão', 'João', 'Pedro',
-  'Biru', 'Gleine', 'Cabrinha', 'Goldines', 'Piruleta'
+  'Biru', 'Gleine', 'Cabrinha', 'Goldines', 'Piruleta', 'PP',
 ]
 
 const DEFINITION_TEMPLATES = {
@@ -134,7 +134,7 @@ const ACTIONS = [
   'resfriar',  'aquecer',  'secar',  'umedecer',  'pressionar',  'comprimir',
   'dobrar',  'deslocar',  'posicionar',  'fixar',  'recobrir',  'medir',  'calcular',
   'comparar',  'avaliar',  'registrar',  'documentar',  'codificar',  'decodificar',
-  'interpretar',  'simular',  'detectar',  'localizar',  'coordenar'
+  'interpretar',  'simular',  'detectar',  'localizar',  'coordenar',
 ];
 
 const EXAMPLES = {
