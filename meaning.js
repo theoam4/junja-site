@@ -135,7 +135,7 @@ const ACTIONS = [
 ];
 
 const EXAMPLES = {
-  substantivo: (word) => [
+  substantivo: (word, action, nome1, nome2) => [
     `O ${word} encontrado na região era de excelente qualidade.`,
     `Utilizamos um ${word} especial para essa tarefa.`,
     `O antigo ${word} foi restaurado pelos especialistas.`,
@@ -162,7 +162,7 @@ const EXAMPLES = {
     `A presença daquele ${word} deixou os moradores preocupados.`,
   ],
 
-  verbo: (word) => [
+  verbo: (word, action, nome1, nome2) => [
     `É preciso ${word} cuidadosamente para obter bons resultados.`,
     `Os artesãos ${word} seguindo técnicas ancestrais.`,
     `Aprendeu a ${word} observando os mais experientes.`,
@@ -189,7 +189,7 @@ const EXAMPLES = {
     `Os especialistas voltaram ao local para ${word} novamente.`,
   ],
 
-  adjetivo: (word) => [
+  adjetivo: (word, action, nome1, nome2) => [
     `O material ficou mais ${word} após o tratamento.`,
     `Sua abordagem era notavelmente ${word}.`,
     `O resultado final estava perfeitamente ${word}.`,
@@ -216,7 +216,7 @@ const EXAMPLES = {
     `O resultado foi tão ${word} que ninguém esperava.`,
   ],
 
-  adverbio: (word) => [
+  adverbio: (word, action, nome1, nome2) => [
     `Trabalhou ${word}mente durante toda a manhã.`,
     `Explicou o processo ${word} e com paciência.`,
     `Resolveu a questão ${word}, sem pressa.`,
@@ -330,7 +330,7 @@ function gerarSignificado(palavra) {
     .replaceAll('{nome1}', nome1)
     .replaceAll('{nome2}', nome2)
 
-  const exemplosDoTipo = EXAMPLES[tipo](palavra, action, NOME);
+  const exemplosDoTipo = EXAMPLES[tipo](palavra, action, nome1, nome2);
   const exemplo = escolherAleatorio(exemplosDoTipo);
 
   return {
