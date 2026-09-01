@@ -23,8 +23,8 @@ const DEFINITION_TEMPLATES = {
   substantivo: [
     'Tipo de {word1} utilizado para {action} {word2}.',
     'Espécie de {word1} associada à presença de {word2}.',
-    'Instrumento utilizado para {action} {word1} por meio de {word2}.',
-    'Objeto utilizado para {action} {word1} em determinadas situações.',
+    'Instrumento utilizado pelo {nome1} para {action} {word1} por meio de {word2}.',
+    'Objeto que o {nome1} utiliza para {action} {word1}.',
     'Fenômeno que ocorre quando {word1} entra em contato com {word2}.',
     'Processo caracterizado pela transformação de {word1} em {word2}.',
     'Estado resultante da combinação entre {word1} e {word2}.',
@@ -45,10 +45,11 @@ const DEFINITION_TEMPLATES = {
 
   verbo: [
     'Ato de transformar {word1} em {word2}.',
+    'Ato de transformar {nome1} em {word1}',
     'Processo de unir {word1} com {word2}.',
     'Ação de separar {word1} de {word2}.',
     'Movimento que conduz {word1} até {word2}.',
-    'Técnica utilizada para extrair {word1} utilizando {word2}.',
+    'Técnica utilizada pelo {nome1} para extrair {word1} utilizando {word2}.',
     'Método empregado para preparar {word1} com auxílio de {word2}.',
     'Forma de comunicar {word1} por meio de {word2}.',
     'Maneira de proteger {word1} contra {word2}.',
@@ -87,6 +88,7 @@ const DEFINITION_TEMPLATES = {
     'Relacionado a situações envolvendo {word1} e {word2}.',
     'Que possui características difíceis de distinguir das de {word1}.',
     'Que se torna particularmente evidente na presença de {word2}.',
+    'Tipo de jogada que o {nome1} faz nas rankeds.',
   ],
 
   adverbio: [
@@ -103,13 +105,14 @@ const DEFINITION_TEMPLATES = {
     'De forma particularmente comum na presença de {word2}.',
     'Segundo um método associado a {word1}.',
     'De maneira compatível com as propriedades de {word2}.',
-    'Com intensidade semelhante à observada em {word1}.',
+    'Com intensidade semelhante à observada pelo {nome1} em {word1}.',
     'De forma característica de quem utiliza {word2}.',
     'De maneira inesperada diante da presença de {word1}.',
     'Segundo características tradicionalmente atribuídas a {word2}.',
     'De modo semelhante ao comportamento de {word1}.',
     'Com uma precisão incomum para situações envolvendo {word2}.',
     'De maneira típica de situações relacionadas a {word1}.',
+    'Com cheirinho do {nome1}'
   ],
 };
 
@@ -146,7 +149,7 @@ const EXAMPLES = {
     `O ${word} tem gosto de cheetos.`,
     `O ${word} chamou a atenção dos pesquisadores.`,
     `Encontraram um ${word} escondido atrás da parede.`,
-    `Ninguém sabia explicar a origem daquele ${word}.`,
+    `Ninguém sabia ${action} a origem daquele ${word}.`,
     `O ${word} desapareceu misteriosamente durante a noite.`,
     `A equipe registrou o ${word} antes de deixar o local.`,
     `O tamanho do ${word} surpreendeu os especialistas.`,
@@ -160,6 +163,7 @@ const EXAMPLES = {
     `O funcionamento do ${word} ainda não foi completamente explicado.`,
     `O ${word} foi encontrado próximo ao rio.`,
     `A presença daquele ${word} deixou os moradores preocupados.`,
+    `O ${word} bugou a cabeça do ${nome1}`
   ],
 
   verbo: (word, action, nome1, nome2) => [
@@ -214,6 +218,7 @@ const EXAMPLES = {
     `O método revelou-se bastante ${word} na prática.`,
     `A situação tornou-se especialmente ${word} durante a noite.`,
     `O resultado foi tão ${word} que ninguém esperava.`,
+    `O posicionamento do ${nome1} na TF foi ${word}`,
   ],
 
   adverbio: (word, action, nome1, nome2) => [
@@ -222,9 +227,9 @@ const EXAMPLES = {
     `Resolveu a questão ${word}, sem pressa.`,
     `Conduziu a cerimônia ${word}, respeitando as tradições.`,
     `Bugou o ${word} da forma mais adequada.`,
-    `Pickou ${word} na ranked do lol.`,
+    `O ${nome1} pickou ${word} na ranked do lol.`,
     `O técnico ajustou o equipamento ${word}.`,
-    `A equipe avançou ${word} pelo corredor.`,
+    `A equipe do ${nome1} avançou ${word} pelo corredor.`,
     `Ele respondeu ${word} à pergunta.`,
     `Os pesquisadores analisaram os dados ${word}.`,
     `A máquina funcionou ${word} durante o experimento.`,
@@ -241,11 +246,12 @@ const EXAMPLES = {
     `O operador controlou o sistema ${word}.`,
     `A cerimônia terminou ${word}.`,
     `O jogador reagiu ${word} à situação.`,
+    `O ${nome1} feedou de maneira ${word}. `,
   ],
 };
 
 const TYPE_LABELS = {
-  substantivo: 'subst. masc.',
+  substantivo: 'subst.',
   verbo: 'v. trans.',
   adjetivo: 'adj.',
   adverbio: 'adv.',
