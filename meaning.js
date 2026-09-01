@@ -319,7 +319,7 @@ function gerarSignificado(palavra) {
     .replaceAll('{word2}', word2)
     .replaceAll('{action}', action);
 
-  const exemplosDoTipo = EXAMPLES[tipo](palavra);
+  const exemplosDoTipo = EXAMPLES[tipo](palavra, action);
   const exemplo = escolherAleatorio(exemplosDoTipo);
 
   return {
