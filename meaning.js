@@ -13,6 +13,12 @@ const PALAVRAS_SIGNIFICADO = [
   'JOINTERSON', 'GOLBERSON',
 ];
 
+const NOME = [
+  'Walmir', 'Theozin', 'Keks mitinho', 'Marks', 'Wolf', 'Naldin', 'Zeg', 'Djow Djow',
+  'Bernadin', 'Lucca', 'Galileu', 'Vitu P.O.', 'Xexeu', 'Marcão', 'João', 'Pedro',
+  'Biru', 'Gleine', 'Cabrinha', 'Goldines', 'Piruleta'
+]
+
 const DEFINITION_TEMPLATES = {
   substantivo: [
     'Tipo de {word1} utilizado para {action} {word2}.',
