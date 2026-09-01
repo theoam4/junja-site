@@ -314,8 +314,9 @@ function gerarSignificado(palavra) {
 
   const [ref1, ref2] = amostrarSemReposicao(PALAVRAS_SIGNIFICADO, 2);
   const word1 = ref1.toLowerCase();
-  const [ref3] = amostrarSemReposicao(NOME, 1)
-  const nome = ref3;
+  const [ref3, ref4] = amostrarSemReposicao(NOME, 2);
+  const nome1 = ref3;
+  const nome2 = ref4 !== undefined ? ref4 : ref3;
   // No original em Python, só word1 é sempre minúsculo -- word2 mantém a
   // caixa original da palavra de referência quando existem 2 distintas.
   const word2 = ref2.toLowerCase() !== undefined ? ref2.toLowerCase() : ref1.toLowerCase();
@@ -326,7 +327,8 @@ function gerarSignificado(palavra) {
     .replaceAll('{word1}', word1)
     .replaceAll('{word2}', word2)
     .replaceAll('{action}', action)
-    .replaceAll('{nome}', nome);
+    .replaceAll('{nome1}', nome1)
+    .replaceAll('{nome2}', nome2)
 
   const exemplosDoTipo = EXAMPLES[tipo](palavra, action, NOME);
   const exemplo = escolherAleatorio(exemplosDoTipo);
