@@ -141,9 +141,10 @@ const EXAMPLES = {
   substantivo: (word, action, nome1, nome2) => [
     `O ${word} encontrado na região era de excelente qualidade.`,
     `Utilizamos um ${word} especial para essa tarefa.`,
+    `O ${nome1} gosta muito de ${word}]}`,
     `O antigo ${word} foi restaurado pelos especialistas.`,
     `Descobriram um ${word} raro nas escavações.`,
-    `O ${word} foi feito com muito cuidado.`,
+    `${nome1} fez o ${word} com muito cuidado`,
     `O ${word} é um dos mais importantes da região.`,
     `O ${word} tem cheiro de queijo.`,
     `O ${word} tem gosto de cheetos.`,
@@ -170,11 +171,11 @@ const EXAMPLES = {
     `É preciso ${word} cuidadosamente para obter bons resultados.`,
     `Os artesãos ${word} seguindo técnicas ancestrais.`,
     `Aprendeu a ${word} observando os mais experientes.`,
-    `Decidiu ${word} usando métodos tradicionais.`,
+    `${nome1} decidiu ${word} usando métodos tradicionais.`,
     `Foi ${word} com muita dedicação.`,
     `Kekel ${word} com muita habilidade.`,
     `Os pesquisadores começaram a ${word} o material imediatamente.`,
-    `Ninguém sabia como ${word} corretamente naquela situação.`,
+    `${nome1} não sabia como ${word} corretamente naquela situação.`,
     `A equipe precisou ${word} antes do início do experimento.`,
     `Eles conseguiram ${word} sem nenhuma dificuldade.`,
     `O especialista ensinou os alunos a ${word}.`,
@@ -218,35 +219,36 @@ const EXAMPLES = {
     `O método revelou-se bastante ${word} na prática.`,
     `A situação tornou-se especialmente ${word} durante a noite.`,
     `O resultado foi tão ${word} que ninguém esperava.`,
-    `O posicionamento do ${nome1} na TF foi ${word}`,
+    `O posicionamento do ${nome1} na tf foi ${word}`,
+    `O ${nome1} é muito ${word}`,
   ],
 
-  adverbio: (word, action, nome1, nome2) => [
-    `Trabalhou ${word}mente durante toda a manhã.`,
-    `Explicou o processo ${word} e com paciência.`,
-    `Resolveu a questão ${word}, sem pressa.`,
-    `Conduziu a cerimônia ${word}, respeitando as tradições.`,
-    `Bugou o ${word} da forma mais adequada.`,
-    `O ${nome1} pickou ${word} na ranked do lol.`,
-    `O técnico ajustou o equipamento ${word}.`,
-    `A equipe do ${nome1} avançou ${word} pelo corredor.`,
-    `Ele respondeu ${word} à pergunta.`,
-    `Os pesquisadores analisaram os dados ${word}.`,
-    `A máquina funcionou ${word} durante o experimento.`,
-    `Ela organizou os documentos ${word}.`,
-    `O grupo trabalhou ${word} até o fim da tarde.`,
-    `O atleta executou o movimento ${word}.`,
-    `O professor explicou a questão ${word}.`,
-    `A equipe resolveu o problema ${word}.`,
-    `Ele conduziu o veículo ${word} pela estrada.`,
-    `Os músicos tocaram ${word} durante a apresentação.`,
-    `A criança caminhou ${word} pelo jardim.`,
-    `O pesquisador examinou a amostra ${word}.`,
-    `Eles concluíram o experimento ${word}.`,
-    `O operador controlou o sistema ${word}.`,
-    `A cerimônia terminou ${word}.`,
-    `O jogador reagiu ${word} à situação.`,
-    `O ${nome1} feedou de maneira ${word}. `,
+  adverbio: (word, action, nome1, nome2,adjw) => [
+    `Trabalhou ${adjw} durante toda a manhã.`,
+    `Explicou o processo ${adjw} paciência.`,
+    `Resolveu a questão ${adjw} pressa.`,
+    `Conduziu a cerimônia ${adjw} peitando as tradições.`,
+    `Bugou o ${adjw} da forma mais adequada.`,
+    `O ${nome1} pickou ${adjw} na ranked do lol.`,
+    `O técnico ajustou o equipamento ${adjw}.`,
+    `A equipe do ${nome1} avançou ${adjw} corredor.`,
+    `Ele respondeu ${adjw} à pergunta.`,
+    `Os pesquisadores analisaram os dados ${adjw}.`,
+    `A máquina funcionou ${adjw}  durante o experimento.`,
+    `Ela organizou os documentos ${adjw}.`,
+    `O grupo trabalhou ${adjw} até o fim da tarde.`,
+    `O atleta executou o movimento ${adjw}.`,
+    `O professor explicou a questão ${adjw}.`,
+    `A equipe resolveu o problema ${adjw}.`,
+    `Ele conduziu o veículo ${adjw} pela estrada.`,
+    `Os músicos tocaram ${adjw} durante a apresentação.`,
+    `A criança caminhou ${adjw} pelo jardim.`,
+    `O pesquisador examinou a amostra ${adjw}.`,
+    `Eles concluíram o experimento ${adjw}.`,
+    `O operador controlou o sistema ${adjw}.`,
+    `A cerimônia terminou ${adjw}.`,
+    `O jogador reagiu ${adjw} à situação.`,
+    `O ${nome1} feedou de maneira ${adjw}. `,
   ],
 };
 
@@ -318,6 +320,7 @@ function gerarSignificado(palavra) {
   const tipo = escolherAleatorio(Object.keys(DEFINITION_TEMPLATES));
   const template = escolherAleatorio(DEFINITION_TEMPLATES[tipo]);
 
+  const adjw =palavra.slice(0,-1) + 'mente';
   const [ref1, ref2] = amostrarSemReposicao(PALAVRAS_SIGNIFICADO, 2);
   const word1 = ref1.toLowerCase();
   const [ref3, ref4] = amostrarSemReposicao(NOME, 2);
@@ -325,7 +328,7 @@ function gerarSignificado(palavra) {
   const nome2 = ref4 !== undefined ? ref4 : ref3;
   // No original em Python, só word1 é sempre minúsculo -- word2 mantém a
   // caixa original da palavra de referência quando existem 2 distintas.
-  const word2 = ref2.toLowerCase() !== undefined ? ref2.toLowerCase() : ref1.toLowerCase();
+  const word2 = ref2 !== undefined ? ref2.toLowerCase() : ref1.toLowerCase();
 
   const action = escolherAleatorio(ACTIONS);
 
@@ -336,7 +339,7 @@ function gerarSignificado(palavra) {
     .replaceAll('{nome1}', nome1)
     .replaceAll('{nome2}', nome2)
 
-  const exemplosDoTipo = EXAMPLES[tipo](palavra, action, nome1, nome2);
+  const exemplosDoTipo = EXAMPLES[tipo](palavra, action, nome1, nome2, adjw);
   const exemplo = escolherAleatorio(exemplosDoTipo);
 
   return {
